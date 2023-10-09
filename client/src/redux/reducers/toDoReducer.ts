@@ -25,7 +25,23 @@ const toDoReducer = (state = initialState,action:ToDoActions)=>{
             return{
                 ...state,
                 isloading:false,
-                todos: [],
+                error: action.payload.error
+            }
+        case actionTypes.DELETE_TODO_START:
+            return{
+                ...state,
+                isloading: true,
+            }
+        case actionTypes.DELETE_TODO_SUCCESS:
+            return{
+                ...state,
+                isloading:false,
+                todos: state.todos.filter((todo)=> todo._id !== action.payload) 
+            }
+        case actionTypes.DELETE_TODO_ERROR:
+            return{
+                ...state,
+                isloading:false,
                 error: action.payload.error
             }
         default:

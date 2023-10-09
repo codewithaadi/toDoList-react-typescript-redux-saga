@@ -1,13 +1,15 @@
 import { useState } from "react";
 // import { toggleTodo,updateTodo,deleteTodo } from '../redux/actions';
-// import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteToDoStart } from "../redux/actions/todoAction";
+import { RootState } from '../redux/reducers/rootReducer';
 
 
 export default function Todo(props:any) {
   const [editing, setEditing] = useState(false);
   const [text,setText] = useState(props.todo.content);
-
-//   const dispatch = useDispatch();
+  const todos = useSelector((state:RootState) => state.data.todos);
+  const dispatch = useDispatch();
   const onFormSubmit = (e:any)=>{
     e.preventDefault();
     setEditing(prevState => !prevState);
@@ -34,7 +36,11 @@ export default function Todo(props:any) {
 
       <span className='icon'>
         <i className='fas fa-trash' 
-        // onClick={()=>dispatch(deleteTodo(props.todo._id))}
+        onClick={()=>{
+          // console.log(todos);
+          // console.log(todos.filter((todo)=> todo._id!== props.todo._id) )
+          dispatch(deleteToDoStart(props.todo._id))
+        }}
         />
       </span>
       <span className='icon'>

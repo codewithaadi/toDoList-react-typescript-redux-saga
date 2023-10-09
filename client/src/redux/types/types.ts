@@ -12,7 +12,19 @@ export interface LoadToDoSuccessPayload{
 }
 
 export interface LoadToDoErrorPayload{
-    error: any;
+    error: string;
+}
+
+export interface DeleteToDoStartPayload{
+    _id : string;
+}
+
+// export interface DeleteToDoSuccessPayload{
+//     _id : string;
+// }
+
+export interface DeleteToDoErrorPayload{
+    error: string;
 }
 
 export type LoadToDoStart = {
@@ -29,4 +41,18 @@ export type LoadToDoError ={
     payload: LoadToDoErrorPayload
 }
 
-export type ToDoActions = LoadToDoStart | LoadToDoSuccess | LoadToDoError ;
+export type DeleteToDoStart={
+    type: typeof actionTypes.DELETE_TODO_START;
+    payload: DeleteToDoStartPayload
+}
+
+export type DeleteToDoSuccess={
+    type: typeof actionTypes.DELETE_TODO_SUCCESS;
+    payload : string
+}
+
+export type DeleteToDoError={
+    type: typeof actionTypes.DELETE_TODO_ERROR;
+    payload: DeleteToDoErrorPayload
+}
+export type ToDoActions = LoadToDoStart | LoadToDoSuccess | LoadToDoError | DeleteToDoStart | DeleteToDoSuccess | DeleteToDoError;

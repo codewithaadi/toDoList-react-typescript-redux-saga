@@ -11,7 +11,7 @@ app.use(bodyParser.json({extended:true}));
 app.use(bodyParser.urlencoded({extended:true}))
 
 app.use('/',route);
-const PORT = 8000;
+const PORT = 7000;
 
 Connection();
 app.listen(PORT,()=>{

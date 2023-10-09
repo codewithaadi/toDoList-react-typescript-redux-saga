@@ -10,6 +10,6 @@ export default function Tabs(props:any) {
     //         {tab}
     //     </button>
     // ))
-    <div>Tab</div>
+    <div></div>
   )
 }

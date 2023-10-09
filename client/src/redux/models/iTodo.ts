@@ -1,5 +1,5 @@
 export interface iTodo{
-    _id: number;
+    _id: string;
     content: string,
     done: boolean
 }
