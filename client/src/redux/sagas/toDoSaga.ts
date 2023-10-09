@@ -4,8 +4,9 @@ import {all,call,put,takeEvery,fork,take, takeLatest} from 'redux-saga/effects';
 import { loadToDoSuccess,loadToDoError } from "../actions/todoAction";
 import { deleteToDoSuccess,deleteToDoError } from "../actions/todoAction";
 import { addToDoSuccess,addToDoError } from "../actions/todoAction";
+import { toggleToDoSuccess,toggleToDoError } from "../actions/todoAction";
 
-import { getAllToDo,deleteToDo,createToDo } from "../../api/api";
+import { getAllToDo,deleteToDo,createToDo, toggleToDo } from "../../api/api";
 
 function* onLoadToDoSaga():Generator{
     try {
@@ -39,6 +40,15 @@ function* onAddToDoSaga(data):Generator{
     }
 }
 
+function* onToggleToDoSaga(data):Generator{
+    try {
+        yield call(toggleToDo,data.payload);
+        yield put(toggleToDoSuccess(data.payload))
+    } catch (error:any) {
+        yield put(toggleToDoError({error:error}))
+    }
+}
+
 function* onLoadToDo() {
     yield takeEvery(actionTypes.LOAD_ALL_TODO_START,onLoadToDoSaga)
 }
@@ -54,7 +64,11 @@ function* onAddToDo(){
     yield takeLatest(actionTypes.ADD_TODO_START,onAddToDoSaga)
 }
 
-const toDoSagas = [fork(onLoadToDo),fork(onDeleteToDo),fork(onAddToDo)];
+function* onToggleToDo(){
+    yield takeLatest(actionTypes.TOGGLE_TODO_START,onToggleToDoSaga);
+}
+
+const toDoSagas = [fork(onLoadToDo),fork(onDeleteToDo),fork(onAddToDo),fork(onToggleToDo)];
 
 export default function* rootSaga(){
     yield all([...toDoSagas])
