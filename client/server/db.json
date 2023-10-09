@@ -1,0 +1,32 @@
+{
+    "users": [
+      {
+        "name": "Aaditya Mishra",
+        "id": 2,
+        "username": "mishraditya31",
+        "email": "mishraditya31@gmail.com",
+        "phone": "8076521142"
+      },
+      {
+        "name": "Akshita Mishra",
+        "id": 3,
+        "username": "mishrakshita2203",
+        "email": "mishrakshita2203@gmail.com",
+        "phone": "9315049814"
+      },
+      {
+        "name": "Urmila Mishra",
+        "id": 4,
+        "username": "mishraurmila80",
+        "email": "urmilamishra1980@gmail.com",
+        "phone": "7982622417"
+      },
+      {
+        "name": "Hansraj Mishra",
+        "id": 5,
+        "username": "hansrajmishra75",
+        "email": "hansrajmishra75@gmail.com",
+        "phone": "9313975957"
+      }
+    ]
+  }
