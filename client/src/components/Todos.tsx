@@ -30,27 +30,27 @@ export default function Todos() {
     //   }
     // }
 
-const removeDoneTodos =()=>{
-  todos.forEach(({done,_id})=>{
-    if(done){
-      // dispatch(deleteTodo(_id));
-    }
-  })
-}
+// const removeDoneTodos =()=>{
+//   todos.forEach(({done,_id})=>{
+//     if(done){
+//       // dispatch(deleteTodo(_id));
+//     }
+//   })
+// }
   return (
     <article>
       <div>
         <Tabs 
         // currentTab={currentTab} 
         />
-        {
+        {/* {
           todos.some(todo => todo.done) ? (
             <button className='button clear' 
             onClick={removeDoneTodos}
             >
               Remove Done ToDo's
               </button> ) : null
-        }
+        } */}
       </div>
       <ul>
       {/* {

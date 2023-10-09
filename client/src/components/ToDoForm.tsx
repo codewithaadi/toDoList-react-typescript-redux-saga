@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {useDispatch} from 'react-redux';
-// import { addNewTodo } from "../redux/actions";
-
+import { addToDoStart,loadToDoStart } from "../redux/actions/todoAction";
 
 const ToDoForm = ()=>{
     const[text,setText] = useState("");
@@ -9,7 +8,8 @@ const ToDoForm = ()=>{
 
     const onFormSubmit = (e:any)=>{
         e.preventDefault();
-        // dispatch(addNewTodo(text));
+        dispatch(addToDoStart(text));
+        dispatch(loadToDoStart());
         setText("");
     }
 
