@@ -1,8 +1,10 @@
 import { actionTypes } from "../Actiontypes/actiontypes";
 
-import {LoadToDoError,ErrorPayload,LoadToDoStart,LoadToDoSuccessPayload,LoadToDoSuccess} from '../types/types';
+import {LoadToDoError,ErrorPayload,LoadToDoStart,LoadToDoSuccessPayload,LoadToDoSuccess, UpdateToDoSuccessPayload,} from '../types/types';
 import { DeleteToDoSuccess,DeleteToDoStart,DeleteToDoError } from "../types/types";
 import { AddToDoStart,AddToDoSuccess,AddToDoError } from "../types/types";
+import { ToggleToDoStart,ToggleToDoSuccess,ToggleToDoError } from "../types/types";
+import { UpdateToDoStartPayload,UpdateToDoStart,UpdateToDoSuccess,UpdateToDoError } from "../types/types";
 
 
 export const loadToDoStart = ():LoadToDoStart =>({
@@ -48,17 +50,32 @@ export const addToDoError = (payload:ErrorPayload):AddToDoError=>({
     payload
 })
 
-export const toggleToDoStart = (payload:string)=>({
+export const toggleToDoStart = (payload:string):ToggleToDoStart=>({
     type: actionTypes.TOGGLE_TODO_START,
     payload
 })
 
-export const toggleToDoSuccess = (payload:string)=>({
+export const toggleToDoSuccess = (payload:string):ToggleToDoSuccess=>({
     type: actionTypes.TOGGLE_TODO_SUCCESS,
     payload
 })
 
-export const toggleToDoError = (payload:ErrorPayload)=>({
+export const toggleToDoError = (payload:ErrorPayload):ToggleToDoError=>({
     type: actionTypes.TOGGLE_TODO_ERROR,
+    payload
+})
+
+export const updateToDoStart = (payload:UpdateToDoStartPayload) : UpdateToDoStart=>({
+    type: actionTypes.UPDATE_TODO_START,
+    payload
+})
+
+export const updateToDoSuccess = (payload:UpdateToDoSuccessPayload) : UpdateToDoSuccess=>({
+    type: actionTypes.UPDATE_TODO_SUCCESS,
+    payload
+})
+
+export const upadateToDoError = (payload:ErrorPayload):UpdateToDoError=>({
+    type: actionTypes.UPDATE_TODO_ERROR,
     payload
 })

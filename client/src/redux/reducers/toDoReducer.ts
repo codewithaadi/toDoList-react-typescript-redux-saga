@@ -13,10 +13,12 @@ const toDoReducer = (state = initialState, action: ToDoActions) => {
     case actionTypes.DELETE_TODO_START:
     case actionTypes.ADD_TODO_START:
     case actionTypes.TOGGLE_TODO_START:
+    case actionTypes.UPDATE_TODO_START:
       return {
         ...state,
         isloading: true,
       };
+      
     case actionTypes.LOAD_ALL_TODO_SUCCESS:
       return {
         ...state,
@@ -41,16 +43,23 @@ const toDoReducer = (state = initialState, action: ToDoActions) => {
         isloading: false,
         todos: state.todos.map(todo=>(todo._id === action.payload ? {...todo, done: !todo.done} : todo))
       };
+    case actionTypes.UPDATE_TODO_SUCCESS:
+      return{
+        ...state,
+        isloading: false,
+        todos: state.todos.map(todo=>(todo._id === action.payload._id ? {...todo, content : action.payload.content} : todo))
+      };
+
     case actionTypes.LOAD_ALL_TODO_ERROR:
     case actionTypes.DELETE_TODO_ERROR:
     case actionTypes.ADD_TODO_ERROR:
     case actionTypes.TOGGLE_TODO_ERROR:
+    case actionTypes.UPDATE_TODO_ERROR:
       return {
         ...state,
         isloading: false,
         error: action.payload.error,
       };
-
     default:
       return {
         ...state,

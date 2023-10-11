@@ -1,9 +1,6 @@
 import { useState } from "react";
-// import { toggleTodo,updateTodo,deleteTodo } from '../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteToDoStart } from "../redux/actions/todoAction";
-import { toggleToDoStart } from "../redux/actions/todoAction";
-import { RootState } from '../redux/reducers/rootReducer';
+import { toggleToDoStart,deleteToDoStart,updateToDoStart } from "../redux/actions/todoAction";
 
 
 export default function Todo(props:any) {
@@ -13,7 +10,8 @@ export default function Todo(props:any) {
   const onFormSubmit = (e:any)=>{
     e.preventDefault();
     setEditing(prevState => !prevState);
-    // dispatch(updateTodo(props.todo._id, text));
+    const editData = {_id:props.todo._id,content:text}
+    dispatch(updateToDoStart(editData));
   }
 
   return (

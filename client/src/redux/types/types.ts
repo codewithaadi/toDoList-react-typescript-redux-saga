@@ -11,6 +11,16 @@ export interface LoadToDoSuccessPayload{
     todos: iTodo[];
 }
 
+export interface UpdateToDoStartPayload{
+    _id: string;
+    content: string;
+}
+
+export interface UpdateToDoSuccessPayload{
+    _id: string;
+    content: string;
+}
+
 export interface ErrorPayload{
     error: string;
 }
@@ -73,4 +83,19 @@ export type ToggleToDoError={
     payload: ErrorPayload
 }
 
-export type ToDoActions = LoadToDoStart | LoadToDoSuccess | LoadToDoError | DeleteToDoStart | DeleteToDoSuccess | DeleteToDoError | AddToDoStart | AddToDoSuccess | AddToDoError | ToggleToDoStart | ToggleToDoSuccess | ToggleToDoError;
+export type UpdateToDoStart={
+    type: typeof actionTypes.UPDATE_TODO_START;
+    payload: UpdateToDoStartPayload;
+}
+
+export type UpdateToDoSuccess={
+    type: typeof actionTypes.UPDATE_TODO_SUCCESS;
+    payload: UpdateToDoSuccessPayload;
+}
+
+export type UpdateToDoError={
+    type: typeof actionTypes.UPDATE_TODO_ERROR;
+    payload: ErrorPayload
+}
+
+export type ToDoActions = LoadToDoStart | LoadToDoSuccess | LoadToDoError | DeleteToDoStart | DeleteToDoSuccess | DeleteToDoError | AddToDoStart | AddToDoSuccess | AddToDoError | ToggleToDoStart | ToggleToDoSuccess | ToggleToDoError | UpdateToDoStart | UpdateToDoSuccess | UpdateToDoError;
