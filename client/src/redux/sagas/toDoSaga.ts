@@ -71,7 +71,7 @@ function* onDeleteToDo(){
 }
 
 function* onAddToDo(){
-    yield takeEvery(actionTypes.ADD_TODO_START,onAddToDoSaga)
+    yield takeLatest(actionTypes.ADD_TODO_START,onAddToDoSaga)
 }
 
 function* onToggleToDo(){
